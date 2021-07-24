@@ -1,0 +1,19 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="lister">
+        <ol>
+            <li v-for="listItem in list">
+                {{ listItem.text }}
+            </li>
+        </ol>
+        <button v-on:click="addItem">Add Item</button>
+        <button v-on:click="removeItem">Remove Item</button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
