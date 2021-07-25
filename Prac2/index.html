@@ -1,0 +1,17 @@
+<html>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="lister" class="container">
+        <div class="containerItem" v-for="listItem in list"@click="play()">
+            <img :src="listItem.Image" />
+        </div>
+    </div>
+    <audio id="audio" src="welcomeAudio.mp3">
+    </audio>
+    <script src="index.js"></script>
+</body>
+</html>
