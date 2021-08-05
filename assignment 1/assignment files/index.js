@@ -21,9 +21,9 @@ var lister = new Vue({
        if(primPar != null && primPar.length>0 && appName != null && appName.length>0 && step != null)
        {
         for (let i = 0; i < 10; i++) {
-           var p = primPar.charCodeAt(i%primPar.length) +
+           var p = Math.max((primPar.charCodeAt(i%primPar.length) +
            appName.charCodeAt(i%appName.length)
-						+ step;
+						+ step) %127, 47 + i + primPar.length + appName.length);
             
             
             generatedPassword = generatedPassword.concat(String.fromCharCode(p));
