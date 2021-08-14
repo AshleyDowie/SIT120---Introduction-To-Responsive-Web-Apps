@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <section v-bind:title="title">
+            test
+        </section>
+        <ol>
+            <li v-for="person in people">
+                <div v-if="person.age > 11">
+                    {{person.age}}
+                    {{person.firstName}}
+                    {{person.lastName}}
+                    <div v-show="person.firstName == 'Mitch'">
+                        Hi {{person.firstName}}
+                    </div>
+                </div>
+                <div v-else>
+                    Too young
+                </div>
+            </li>
+        </ol>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                title: 'hello there',
+                people: [{ firstName: "Dan", lastName: "James", age: 10 }, { firstName: "John", lastName: "Doe", age: 46 },{ firstName: "Mitch", lastName: "Boh", age: 15 }]
+            }
+        })
+    </script>
+</body>
+</html>
