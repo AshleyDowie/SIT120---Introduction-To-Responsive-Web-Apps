@@ -1,0 +1,54 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <ol>
+            <li v-for="pet in pets">
+                {{pet.item}}
+            </li>
+        </ol>
+        <ol>
+            <list-item v-for="pet in pets"
+                       v-bind:param="pet.animal"
+                        v-bind:param3="'pet'"
+                       v-bind:param2="pet.item"></list-item>
+
+        </ol>
+        <ol>
+            <list-item v-for="crop in crops"
+                       v-bind:param="crop.type"
+                        v-bind:param3="'crop'"
+                       v-bind:param2="crop.item"></list-item>
+
+        </ol>
+    </div>
+    <script>
+
+        Vue.component("list-item", {
+            props: ["param", "param2", "param3"],
+            template: "<li>{{param + ' is ' + param3 + ' number  ' + param2 }}</li>",
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                pets: [
+                    {item: 1, animal: "cat" },
+                    {item: 2, animal: "dog" },
+                    {item: 3, animal: "turtle" },
+                ],
+
+                crops: [
+                    { item: 1, type: "bean" },
+                    { item: 2, type: "corn" },
+                ]
+
+            }
+        })
+    </script>
+</body>
+</html>
