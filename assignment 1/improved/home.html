@@ -1,0 +1,50 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="lister">
+        <div id="wrapper">
+            <section class="navbar">
+                <ul class="navigation">
+                    <li class="navigationLink"><a class="active" href="home.html">Home</a></li>
+                    <li class="navigationLink"><a href="index.html">Member</a></li>
+                    <li class="navigationLink"><a href="guest.html">Guest</a></li>
+                    <li class="navigationLink"><a href="contact.html">Contact</a></li>
+                    <li class="navigationLink">
+                        <input class="searchBar" type="text" placeholder="Search..">
+                    </li>
+                </ul>
+
+            </section>
+            <section class="footer">
+                <p style="text-align:center; font-size:1vw;">Trade Mark Limited</p>
+            </section>
+            <section class="mainContent">
+
+                <div style="display:flex; flex-direction:column; align-items:center">
+                    <h1 style="text-align:center; font-size:3vw; padding-top:2%">
+                        Password Place
+                    </h1>
+                </div>
+                <div style="margin:auto; padding:.5vh">
+                    <p style="font-size:1.5vw; text-align:center; padding:2%; margin-right:1vw">
+                        Password Place is a product which allows users to generate passwords for various applications and websites. Password place requires the user to only remember a single password, their ‘primary password”. Password Place uses a deterministic function to create unique password for each application based on the name of the applications name and the user’s primary password. Password Place does not store any user passwords, they are always generated on the fly with the deterministic function.
+                        <br>
+                        <br>
+                        Password place offers two options for use. The user can choose to use password state without creating an account. Or the user can choose to create an account. If the user chooses to use Password Place without creating an account, they will be able to get a unique password for any application simply by typing in a password and a websites name. As the function for determining the password is deterministic, the password will be the same for the user each time.
+                        <br>
+                        <br>
+                        Users that choose to create an account will have access to more advanced features. A user that signs in will be able to create new application entries and save these to a list. This means the user does not have to try and remember which applications they are using Password Place generated passwords for. Users will also be able to “step forward” and “step back” passwords. This allows passwords to be generated using a third parameter, which is a simple integer value known as “step”. Step forward allows a user to generate a new password for an application in the situation that the application has password expiration after a set time.  Step back allows a user to go through the history of their passwords and recall previous passwords.
+                        <br>
+                        <br>
+                        For a logged in user the only information that is stored is their sign in password, their list of applications and the current step for the application. Users are recommended to not use a primary password that is the same as their sign in password. By not storing the user’s primary password, even if someone gains access to the users account, they will not be able to determine any of the user’s passwords.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
