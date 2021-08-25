@@ -1,16 +1,38 @@
 <html>
 <head>
-    <!-- Link style.css to this html file. -->
     <link rel="stylesheet" href="style.css">
-    <!-- Load the required Vue files. -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-    <!-- The div that holds all of the body content. This div establishes the connection to the Vue "lister" component. -->
-    <div id="memberPage">
+    <div id="lister">
+        <div id="wrapper">
+            <section class="navbar">
+                <ul class="navigation">
+                    <li class="navigationLink"><a href="home.html">Home</a></li>
+                    <li class="navigationLink"><a href="index.html">Member</a></li>
+                    <li class="navigationLink"><a class="active" href="guest.html">Guest</a></li>
+                    <li class="navigationLink"><a href="contact.html">Contact</a></li>
+                    <li class="navigationLink">
+                        <input class="searchBar" type="text" placeholder="Search..">
+                    </li>
+                </ul>
 
+            </section>
+            <section class="footer">
+                <p style="text-align:center; font-size:1vw;">Trade Mark Limited</p>
+            </section>
+            <section class="mainContent">
+
+                <div style="display:flex; flex-direction:column; align-items:center">
+                    <h1 style="text-align:center; font-size:3vw; padding-top:2%">
+                        Password Place
+                    </h1>
+                </div>
+                <div style="margin:auto; padding:.5vh">
+                </div>
+            </section>
+        </div>
     </div>
-    <!-- Load the main.js file to allow us Vue calls from the Vue component "lister". -->
     <script src="main.js"></script>
 </body>
 </html>

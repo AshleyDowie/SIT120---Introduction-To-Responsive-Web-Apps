@@ -1,7 +1,9 @@
+//A list of these vue components is displayed at the bottom of the member's page. The user can select any of these to change the current 
+//application that a password is being generated for. 
 Vue.component("OptionButton", {
     props: ["Name"],
-    template: `
-
+    template: 
+`
                     <div>
                         <!-- A tooltip to explain that each website button is selectable. -->
                         <span class="toolTip">Select my name to view me</span>
@@ -10,7 +12,8 @@ Vue.component("OptionButton", {
                             {{Name}}
                         </p>
                     </div>
-`,
+`
+,
     methods:
     {
         SwitchItem: function () {
@@ -19,17 +22,20 @@ Vue.component("OptionButton", {
     }
 
 })
-
+//This component generates a password for the web application and displays it. The password is determined by the primary password entered by the user,
+//the step of the currently selected application and the name of the currently selected application. 
 Vue.component("PasswordGenerator", {
-    props: ["AppName","PrimaryPassword","Step"],
-    template: `
+    props: ["AppName", "PrimaryPassword", "Step"],
+    template: 
+`
                     <div style="margin:auto; padding:.5vh">
                     <!-- Displays the a generated password for the app or a prompt for the user to fill out all required information
                         if they have not yet done so.-->
                         <label class="generalText" style="margin-right:1vw">Generated Password</label>
                         <label class="generalText">{{ GeneratePassword }}</label>
                     </div>
-`,
+`
+    ,
     computed: {
         /*A deterministic function that generates a password for the app based on the app's name, the users primary
        password and the current step of the app.*/
@@ -63,18 +69,22 @@ Vue.component("PasswordGenerator", {
 
 })
 
-
+//This component displays and provides a way to modify the currently selected program's step value. The user is able to increment or decrement
+//the step by interating with the < and > buttons. The step value is used update the password the application. The user can decrement the step value
+//in order to see passwords that they have previously used for this application. Step value can only be changed on the member's page. The guest page
+//will always use a step value of 0.
 Vue.component("Stepper", {
     props: ["Step"],
-    template: `
-
+    template: 
+`
                     <!-- Displays the currently selected app's step and allows the user to increase of decrease it with buttons on each side-->
                     <div style="margin:auto; padding:.5vh;">
                         <button v-on:click="DecreaseStep()" class="generalText"><</button>
                         <label class="generalText">Step {{Step}}</label>
                         <button v-on:click="IncreaseStep()" class="generalText">></button>
                     </div>
-`,
+`
+    ,
     methods:
     {
         IncreaseStep: function () {
@@ -86,17 +96,18 @@ Vue.component("Stepper", {
     }
 })
 
-
+//The main form is used by both the member's page and the guest page. The main form handles the input for the two pieces of data that the user must 
+//always provide atleast an application name and a primary password in order to generate a password.
 Vue.component("mainform", {
     props: ["AppName", "PrimaryPassword"],
-    template: `
-                    <div>
-                        <!-- Displays and allows the user to edit the currently selected app's name. -->
-                        <div style="margin:auto; padding:.5vh;">
-                            <label class="generalText">App Name</label>
-                            <input class="generalText" style="margin-left:2vw; text-align:center" v-model="AppName" placeholder="App" v-on:change="UpdateName(AppName)">
-                        </div>
-
+    template: 
+`
+                <div>
+                    <!-- Displays and allows the user to edit the currently selected app's name. -->
+                    <div style="margin:auto; padding:.5vh;">
+                        <label class="generalText">App Name</label>
+                        <input class="generalText" style="margin-left:2vw; text-align:center" v-model="AppName" placeholder="App" v-on:change="UpdateName(AppName)">
+                    </div>
                     <!-- Displays and allows the user to edit their primary password -->
                     <div style="margin:auto; padding:.5vh">
                         <label class="generalText">Primary Password</label>
@@ -116,10 +127,10 @@ Vue.component("mainform", {
     }
 })
 
-//The "lister" vue component that is used to maintain a list of apps and generate passwords for them.
+//The "lister" vue component is the root component for this application. It provides props to other vue components and maintains all relevent data.
+//lister currently displays the member's page for this proof of concept. 
 var lister = new Vue({
     el: '#memberPage',
-
 
     data: {
         //The list of apps, each containing a name and a step value.
@@ -130,7 +141,7 @@ var lister = new Vue({
         //The index of the currently selected app.
         currentItem: 0,
         //The list of apps, each containing a name and a step value.
-        primaryPassword:null
+        primaryPassword: null
 
     },
 
@@ -192,7 +203,7 @@ var lister = new Vue({
     },
 
     template:
-        `
+`
   <div id="memberPage">
         <!-- The wrapper div contains the css grid layout information. -->
         <div id="wrapper">
@@ -238,8 +249,6 @@ var lister = new Vue({
                         v-bind:PrimaryPassword="primaryPassword"
                         v-bind:Step="list[currentItem].step"
                 ></PasswordGenerator>
-
-
             </section>
             <!-- The itemSroll section for the website. This is a grid layout area. -->
             <section class="itemScroll">
@@ -247,8 +256,7 @@ var lister = new Vue({
 
                 <OptionButton class="itemOption" v-for="(listItem,i) in list"
                               v-bind:Name="listItem.name"
-                               v-on:SwitchItem="SwitchItem(i)">
-                                
+                               v-on:SwitchItem="SwitchItem(i)">                          
             </OptionButton>
             </section>
             <!-- The footer section for the website. This is a grid layout area. -->
@@ -257,7 +265,5 @@ var lister = new Vue({
             </section>
         </div>
     </div>
-
 `
-
 })
