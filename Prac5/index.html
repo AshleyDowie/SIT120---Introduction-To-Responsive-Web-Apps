@@ -22,14 +22,24 @@
                        v-bind:param="crop.type"
                         v-bind:param3="'crop'"
                        v-bind:param2="crop.item"></list-item>
-
         </ol>
+        <p><button v-on:click="increase">Click Me</button>{{count}}</p>
+        <p><counter></counter></p>
     </div>
     <script>
 
         Vue.component("list-item", {
             props: ["param", "param2", "param3"],
             template: "<li>{{param + ' is ' + param3 + ' number  ' + param2 }}</li>",
+        })
+
+        Vue.component("counter", {
+            template: "<button v-on:click='counter ++'>{{counter}}</button>",
+            data: function () {
+                return {
+                    counter: 0,
+                }
+            }
         })
 
         var app = new Vue({
@@ -45,8 +55,13 @@
                 crops: [
                     { item: 1, type: "bean" },
                     { item: 2, type: "corn" },
-                ]
-
+                ],
+                count:0
+            },
+            methods: {
+                increase: function () {
+                    this.count = this.count + 1;
+                }
             }
         })
     </script>
