@@ -70,7 +70,7 @@ Vue.component("PasswordGenerator", {
 })
 
 //This component displays and provides a way to modify the currently selected program's step value. The user is able to increment or decrement
-//the step by interating with the < and > buttons. The step value is used update the password the application. The user can decrement the step value
+//the step by interating with the < and > buttons. The step value is used to update the password of the currently selected the application. The user can decrement the step value
 //in order to see passwords that they have previously used for this application. Step value can only be changed on the member's page. The guest page
 //will always use a step value of 0.
 Vue.component("Stepper", {
@@ -98,7 +98,7 @@ Vue.component("Stepper", {
 
 //The main form is used by both the member's page and the guest page. The main form handles the input for the two pieces of data that the user must 
 //always provide atleast an application name and a primary password in order to generate a password.
-Vue.component("mainform", {
+Vue.component("MainForm", {
     props: ["AppName", "PrimaryPassword"],
     template: 
 `
@@ -130,7 +130,7 @@ Vue.component("mainform", {
 //The "lister" vue component is the root component for this application. It provides props to other vue components and maintains all relevent data.
 //lister currently displays the member's page for this proof of concept. 
 var lister = new Vue({
-    el: '#memberPage',
+    el: '#lister',
 
     data: {
         //The list of apps, each containing a name and a step value.
@@ -204,7 +204,6 @@ var lister = new Vue({
 
     template:
 `
-  <div id="memberPage">
         <!-- The wrapper div contains the css grid layout information. -->
         <div id="wrapper">
             <!-- The navigation bar for the website. This is a grid layout area. -->
@@ -233,12 +232,12 @@ var lister = new Vue({
                     <div style="margin:auto; padding:.5vh">
                         <button v-on:click="AddApp()" class="generalText">Add App</button>
                     </div>
-                    <mainform 
+                    <MainForm 
                         v-bind:AppName="list[currentItem].name"
                         v-bind:PrimaryPassword="primaryPassword"
                         v-on:AppNameChange="AppNameChange"
                         v-on:PrimaryPasswordChange="PrimaryPasswordChange"
-                     ></mainform>
+                     ></MainForm>
                     <Stepper
                         v-bind:Step="list[currentItem].step"
                         v-on:IncreaseStep="IncreaseStep"
