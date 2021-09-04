@@ -1,0 +1,93 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="loginForm">
+        <br>
+        <h2>Login</h2>
+
+        <label for="username">User Name</label>
+        <input id="username" type="text" v-model="username" placeholder="UserName">
+        <label v-if="showBackend == true">{{"Backend username is " + username}}</label>
+        <br>
+        <label for="usernameLazy">Username with lazy modifier</label>
+        <input id="usernameLazy" type="text" v-model.lazy="username" placeholder="UserName">
+        <br>
+        <label for="usernameTrim">Username with trim modifier</label>
+        <input id="usernameTrim" type="text" v-model.trim="username" placeholder="UserName">
+        <br><br>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" v-model="password" placeholder="*****">
+        <label v-if="showBackend == true">{{"Backend password is " + password}}</label>
+        <br>
+        <label for="passwordLazy">Password with lazy modifier</label>
+        <input id="passwordLazy" type="text" v-model.lazy="password" placeholder="*****">
+        <br>
+        <label for="passwordTrim">Password with trim modifier</label>
+        <input id="passwordTrim" type="text" v-model.trim="password" placeholder="*****">
+        <br><br>
+
+        <label for="email">Email</label>
+        <input id="email" type="text" v-model="email" placeholder="Email">
+        <label v-if="showBackend == true">{{"Backend email is " + email}}</label>
+        <br>
+        <label for="emailLazy">Email with lazy modifier</label>
+        <input id="emailLazy" type="text" v-model.lazy="email" placeholder="Email">
+        <br>
+        <label for="emailTrim">Email with trim modifier</label>
+        <input id="emailTrim" type="text" v-model.trim="email" placeholder="Email">
+        <br><br>
+
+        <button v-on:click="ToggleShowBackend">Toggle Back End</button>
+
+        <h2>Party Foods</h2>
+        <input type="checkbox" id="option1" value="Burger" v-model="partyFood" />
+        <label for="option1">Burger</label>
+        <input type="checkbox" id="option2" value="Cake" v-model="partyFood" />
+        <label for="option2">Cake</label>
+        <input type="checkbox" id="option3" value="Pizza" v-model="partyFood" />
+        <label for="option3">Pizza</label>
+        <br />
+        <span>Party Foods: {{ partyFood }}</span>
+        <br><br>
+
+        <h2>Venue</h2>
+        <select v-model="Chosen">
+            <option v-for="Venue in Venues" v-bind:value="Venue">
+                {{ Venue }}
+            </option>
+        </select>
+        <span>Selected: {{ Chosen }}</span>
+    </div>
+
+    <script>
+        var inputForm = new Vue({
+            el: "#loginForm",
+            data: function () {
+                return {
+                    username: '',
+                    password: '',
+                    email: '',
+                    showBackend: false,
+                    partyFood: [],
+
+                    Chosen: 'Please choose a venue',
+                    Venues: [
+                        'Park',
+                        'Cafe',
+                        'Home'
+                    ],
+                }
+            },
+            methods: {
+                ToggleShowBackend: function () {
+                    this.showBackend = !this.showBackend;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
