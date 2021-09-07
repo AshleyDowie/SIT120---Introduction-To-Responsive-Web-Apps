@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="rootComponent">
+        <food-component v-bind:food="food[0]"
+                        v-bind:price="'10'"></food-component>
+
+        <food-component v-bind:food="food[1]"
+                        v-bind:price="'12'"></food-component>
+    </div>
+    <script>
+        var FoodComponent =
+        { 
+            props: {
+                food: Object,
+                price: Number
+            },
+            template: "<p>${{price}}: {{food.Name}} is {{food.Type}} style food. {{food.Name}} has {{food.Calories}} per serving.</p>"            
+        }
+
+        var rootComponent = new Vue({
+            el: "#rootComponent",
+
+            data: {
+                food:[
+                    { Type: "Italian", Name: "Pizza", Calories: 221 },
+                    { Type: "Indian", Name: "Curry", Calories: 205 }
+                ]
+            },
+            components: {
+                'food-component': FoodComponent
+            }
+        })
+    </script>
+</body>
+</html>

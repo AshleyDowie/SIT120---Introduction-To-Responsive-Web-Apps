@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="rootComponent">
+        <global-component>
+            <p slot="slot1">this is now slot1</p>
+            <p slot="slot2">this is now slot2</p>
+        </global-component>
+        <br>
+        <global-component>
+            <p slot="slot1">this is now slot1</p>
+        </global-component>
+        <br>
+        <global-component>
+        </global-component>
+        <br>
+    </div>
+    <script>
+        Vue.component('global-component', {
+            template: `
+                <div>
+                    <slot name = "slot1">
+                        <p>I am the default for slot1</p>
+                    </slot>
+                    <slot name = "slot2">
+                        <p>I am the default for slot2</p>
+                    </slot>
+                </div>
+            `            
+        })
+        var rootComponent = new Vue({
+            el: "#rootComponent"
+        })
+    </script>
+</body>
+</html>

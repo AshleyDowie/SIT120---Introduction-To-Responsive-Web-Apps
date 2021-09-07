@@ -1,0 +1,29 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="rootComponent">
+        <local-component></local-component>
+        <global-component></global-component>
+    </div>
+    <script>
+        //a locally registered component
+        var LocalComponent =
+        { 
+            template: "<p>I am a locally registered component</p>"            
+        }
+        //a globally registered component 
+        Vue.component('global-component', {
+            template: "<p>I am a globally registered component</p>"            
+        })
+        var rootComponent = new Vue({
+            el: "#rootComponent",
+            //components that are available to this component
+            components: {
+                'local-component': LocalComponent
+            }
+        })
+    </script>
+</body>
+</html>

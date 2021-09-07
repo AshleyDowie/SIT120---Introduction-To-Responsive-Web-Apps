@@ -1,14 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\images",
-    "\\Prac1",
-    "\\Prac1\\CSS",
-    "\\Prac1\\HTML",
-    "\\Prac1\\Javascript",
-    "\\Prac1\\Vue",
-    "\\Prac2"
+    "\\assignment 1",
+    "\\assignment 1\\example",
+    "\\assignment 1\\SIT120210694097A1-ProposalAndProofOfConcept",
+    "\\Assignment 2",
+    "\\Prac6",
+    "\\Prac7"
   ],
-  "SelectedNode": "\\Prac2\\index.html",
+  "SelectedNode": "\\assignment 1\\SIT120210694097A1-ProposalAndProofOfConcept\\main.js",
   "PreviewInSolutionExplorer": false
 }

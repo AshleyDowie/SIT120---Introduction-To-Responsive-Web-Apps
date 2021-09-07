@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="rootComponent">
+        {{counter}}
+        <global-component
+            v-on:increase ="Increase()"
+        ></global-component>
+    </div>
+    <script>
+        Vue.component('global-component', {
+            template: 
+                `
+                <div>
+                    Click to Increase
+                    <button v-on:click="Increase()">></button>
+                </div>
+                `,
+            methods:
+            {
+                Increase: function () {
+                    this.$emit('increase')
+                }
+            }
+        })
+        var rootComponent = new Vue({
+            el: "#rootComponent",
+            data: {
+                counter: 0
+            },
+            methods:
+            {
+                Increase: function () {
+                    this.counter++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
